@@ -1,0 +1,11 @@
+[
+  {
+    "no": 1,
+    "name": "홍길동",
+    "rank": "상병",
+    "age": 22,
+    "enlistmentDate": "2021-03-13",
+    "dischargeDate": "2022-09-13",
+    "dDay": -300
+  }
+]
