@@ -19,8 +19,10 @@ public class SoldierAddListener implements SoldierActionListener {
     s.setName(prompt.inputString("이름? "));
     s.setAge(prompt.inputInt("나이? "));
     s.setRank(SoldierActionListener.inputRank(null, prompt));
-    s.setEnlistmentDate(prompt.inputLocalDate("입대일 (yyyy-MM-dd 형식): "));
+    s.setEnlistmentDate(this.inputLocalDate(prompt));
 
+    System.out.printf("전역일: %s\n", s.getDischargeDate().toString());
+    System.out.printf("D-day: %d\n", s.getDDay());
     soldierDao.insert(s);
   }
 }

@@ -36,7 +36,6 @@ public class Soldier implements Serializable, CsvObject, AutoIncrement {
     soldier.setRank(values[2]);
     soldier.setAge(Integer.parseInt(values[3]));
     soldier.setEnlistmentDate(LocalDate.parse(values[4]));
-    soldier.setDischargeDate(LocalDate.parse(values[5]));
 
     if (Soldier.soldierId <= soldier.getNo()) {
       Soldier.soldierId = soldier.getNo() + 1;
@@ -114,24 +113,16 @@ public class Soldier implements Serializable, CsvObject, AutoIncrement {
   }
 
   public LocalDate getDischargeDate() {
-    return dischargeDate;
-  }
-
-  public void setDischargeDate(LocalDate dischargeDate) {
-    this.dischargeDate = dischargeDate;
+    return this.dischargeDate;
   }
 
   public long getDDay() {
-    return dDay;
-  }
-
-  public void setDDay(long dDay) {
-    this.dDay = dDay;
+    return this.dDay;
   }
 
   private void calculateDischargeDateAndDday() {
     if (enlistmentDate != null) {
-      dischargeDate = enlistmentDate.plusMonths(18); // 18개월 후 전역일
+      dischargeDate = enlistmentDate.plusMonths(18).minusDays(1); // 18개월 후 하루 전을 전역일로
       dDay = ChronoUnit.DAYS.between(LocalDate.now(), dischargeDate); // D-day 계산
     } else {
       dischargeDate = null;
@@ -139,4 +130,3 @@ public class Soldier implements Serializable, CsvObject, AutoIncrement {
     }
   }
 }
-

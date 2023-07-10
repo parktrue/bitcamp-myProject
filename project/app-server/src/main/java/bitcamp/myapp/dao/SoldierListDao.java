@@ -17,7 +17,7 @@ public class SoldierListDao implements SoldierDao {
     JsonDataHelper.loadJson(filename, list, Soldier.class);
   }
 
-  public List<Soldier> getInductee(LocalDate date) {
+  public List<Soldier> getInducte(LocalDate date) {
     List<Soldier> resultList =
         list.stream().filter(s -> s.getEnlistmentDate().equals(date)).collect(Collectors.toList());
 
