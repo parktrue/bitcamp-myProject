@@ -16,5 +16,14 @@
     "enlistmentDate": "2023-03-22",
     "dischargeDate": "2024-09-21",
     "dDay": 439
+  },
+  {
+    "no": 3,
+    "name": "김용덕",
+    "rank": "병장",
+    "age": 27,
+    "enlistmentDate": "2023-02-25",
+    "dischargeDate": "2024-08-24",
+    "dDay": 410
   }
 ]
