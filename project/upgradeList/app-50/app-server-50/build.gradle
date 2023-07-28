@@ -51,7 +51,7 @@ tasks.named('test') {
 // eclipse 프로젝트 이름을 설정하기
 eclipse {
     project {
-        name = "bitcamp-project-myapp-server"
+        name = "bitcamp-project-myapp-server-50"
     }
     jdt {
       sourceCompatibility = 17
