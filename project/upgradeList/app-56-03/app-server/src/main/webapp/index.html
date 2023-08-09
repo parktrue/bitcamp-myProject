@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>병력 관리 시스템</title>
+    <style>
+        /* CSS 스타일링 */
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+        }
+        .container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .btn {
+            display: inline-block;
+            background-color: #0072BC; 
+            color: #ffffff;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        img.logo {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="/marinedog.png" alt="병력 관리" class="logo">
+        <h1>병력 관리 시스템</h1>
+        <a href="/soldier/list" class="btn">병사 목록</a>
+        <a href="/board/list?category=1" class="btn">게시판</a>
+        <a href="/board/list?category=2" class="btn">독서록</a>
+        <a href="/auth/form.html" class="btn">로그인</a>
+    </div>
+</body>
+</html>
