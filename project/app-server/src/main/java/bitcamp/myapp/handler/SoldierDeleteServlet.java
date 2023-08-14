@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import bitcamp.myapp.vo.Soldier;
 
 @WebServlet("/soldier/delete")
 public class SoldierDeleteServlet extends HttpServlet {
@@ -15,6 +16,12 @@ public class SoldierDeleteServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+
+    Soldier loginUser = (Soldier) request.getSession().getAttribute("loginUser");
+    if (loginUser == null || !loginUser.getMilitaryNumber().equals("07-72000001")) {
+      response.sendRedirect("/auth/form.html");
+      return;
+    }
 
     try {
       if (InitServlet.soldierDao.delete(Integer.parseInt(request.getParameter("no"))) == 0) {

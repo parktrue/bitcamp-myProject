@@ -18,7 +18,7 @@ public class LoginServlet extends HttpServlet {
       throws ServletException, IOException {
 
     Soldier s = new Soldier();
-    s.setMilitaryNumber(request.getParameter("milNum")); // "milnum"을 "milNum"으로 수정
+    s.setMilitaryNumber(request.getParameter("milNum")); //
     s.setPassword(request.getParameter("password"));
 
     Soldier loginUser = InitServlet.soldierDao.findByMilnumAndPassword(s);

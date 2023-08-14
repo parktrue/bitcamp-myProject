@@ -18,11 +18,16 @@ public class SoldierUpdateServlet extends HttpServlet {
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
+    Soldier loginUser = (Soldier) request.getSession().getAttribute("loginUser");
+    if (loginUser == null) {
+      response.sendRedirect("/auth/form.html");
+    }
+
     Soldier soldier = new Soldier();
     soldier.setNo(Integer.parseInt(request.getParameter("no")));
     soldier.setName(request.getParameter("name"));
     soldier.setRank(request.getParameter("rank"));
-    soldier.setAge(Integer.parseInt(request.getParameter("age"))); // 수정된 부분
+    soldier.setAge(Integer.parseInt(request.getParameter("age")));
     soldier.setMilitaryNumber(request.getParameter("militaryNumber"));
 
     response.setContentType("text/html;charset=UTF-8");

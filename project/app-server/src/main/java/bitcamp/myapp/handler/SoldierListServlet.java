@@ -21,6 +21,12 @@ public class SoldierListServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
+    Soldier loginUser = (Soldier) request.getSession().getAttribute("loginUser");
+    if (loginUser == null) {
+      response.sendRedirect("/auth/form.html");
+      return;
+    }
+
     List<Soldier> soldiers = InitServlet.soldierDao.findAll();
     InitServlet.soldierDao.updateDday();
 
@@ -62,7 +68,7 @@ public class SoldierListServlet extends HttpServlet {
     out.println("<div class='container'>");
     out.println("<h1>병사 목록</h1>");
 
-    out.println("<a href='/soldier/form.html' class='btn'>전입신병 등록</a>");
+    out.println("<a href='/soldier/add.html' class='btn'>전입신병 등록</a>");
     out.println("<a href='/index.html' class='btn'>메인 화면으로</a>");
     out.println("<img src='/marinedog2.png' alt='설명' style='margin-left: 20px' />");
     out.println("<br><br>");

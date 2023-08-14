@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import bitcamp.myapp.vo.Board;
+import bitcamp.myapp.vo.Soldier;
 
 @WebServlet("/board/list")
 public class BoardListServlet extends HttpServlet {
@@ -20,6 +21,11 @@ public class BoardListServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+
+    Soldier loginUser = (Soldier) request.getSession().getAttribute("loginUser");
+    if (loginUser == null) {
+      response.sendRedirect("/auth/form.html");
+    }
 
     int category = Integer.parseInt(request.getParameter("category"));
 

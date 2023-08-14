@@ -80,7 +80,8 @@ public class HomeServlet extends HttpServlet {
       out.println("<a href='/auth/form.html' class='btn'>로그인</a>");
     } else {
       out.printf("<a href='/auth/logout' class='btn'>로그아웃</a>");
-      out.printf("<div class='login-info'>로그인중인 병사: %s</div>", loginUser.getName());
+      out.printf("<div class='login-info'>로그인중인 병사: %s(%s, %s)</div>",
+          loginUser.getMilitaryNumber(), loginUser.getName(), loginUser.getRank());
     }
     out.println("</div>");
     out.println("</body>");

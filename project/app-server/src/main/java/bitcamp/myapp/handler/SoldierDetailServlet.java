@@ -18,6 +18,11 @@ public class SoldierDetailServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
+    Soldier loginUser = (Soldier) request.getSession().getAttribute("loginUser");
+    if (loginUser == null) {
+      response.sendRedirect("/auth/form.html");
+    }
+
     Soldier soldier = InitServlet.soldierDao.findBy(Integer.parseInt(request.getParameter("no")));
 
     response.setContentType("text/html;charset=UTF-8");
@@ -118,7 +123,7 @@ public class SoldierDetailServlet extends HttpServlet {
       out.println("</form>");
     }
 
-    out.println("</div>"); // container div 종료
+    out.println("</div>");
     out.println("</body>");
     out.println("</html>");
   }
