@@ -20,10 +20,7 @@ dependencies {
   
     // Mybatis 라이브러리
     implementation 'org.mybatis:mybatis:3.5.13'
-  
-    // multipart/form-data 처리 라이브러리
-    implementation 'commons-fileupload:commons-fileupload:1.5'
-     
+    
     // Servlet API 
     providedCompile 'javax.servlet:javax.servlet-api:4.0.1'
         
