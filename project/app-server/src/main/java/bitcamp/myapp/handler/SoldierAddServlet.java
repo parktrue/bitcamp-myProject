@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import bitcamp.myapp.vo.Soldier;
 
-@WebServlet("/soldier/add.html")
+@WebServlet("/soldier/add")
 public class SoldierAddServlet extends HttpServlet {
 
   private static final long serialVersionUID = 1L;
@@ -20,7 +20,7 @@ public class SoldierAddServlet extends HttpServlet {
       throws ServletException, IOException {
 
     Soldier loginUser = (Soldier) request.getSession().getAttribute("loginUser");
-    if (loginUser == null || !loginUser.getMilitaryNumber().equals("07-72000001")) {
+    if (loginUser == null || !loginUser.getName().equals("행정관")) {
       response.sendRedirect("/auth/form.html");
       return;
     }

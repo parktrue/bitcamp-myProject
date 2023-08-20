@@ -19,7 +19,7 @@
 
   <select id="findLatestMilitaryNumberByYear" parameterType="String" resultType="String">
   select soldier_milnum 
-  from myapp_soldier 
+  from myproject_soldier 
   where soldier_milnum like CONCAT(#{year}, '-7200%') 
   order by soldier_milnum desc 
   limit 1
@@ -27,7 +27,7 @@
 
   <insert id="insert" parameterType="soldier">
   insert into 
-  myapp_soldier
+  myproject_soldier
   (name,
    age,
    password,
@@ -51,7 +51,7 @@
     dis_date,
     d_day
   from 
-    myapp_soldier
+    myproject_soldier
   order by
     soldier_no asc
   </select>
@@ -61,7 +61,7 @@
     soldier_no, soldier_milnum, name, age, `rank`,
     enlis_date, dis_date, d_day
   from
-    myapp_soldier
+    myproject_soldier
   where
     soldier_no=#{no}
   </select>
@@ -72,7 +72,7 @@
     soldier_milnum, name, age, `rank`,
     enlis_date, dis_date, d_day
   from 
-    myapp_soldier
+    myproject_soldier
   where
     soldier_milnum=#{militaryNumber}
     and password=sha1(#{password})
@@ -80,7 +80,7 @@
 
   <update id="update" parameterType="soldier">
   update 
-    myapp_soldier set
+    myproject_soldier set
     name=#{name},
     age=#{age}, 
     `rank`=#{rank},
@@ -90,13 +90,13 @@
   </update>
 
   <delete id="delete" parameterType="int">
-  delete from myapp_soldier
+  delete from myproject_soldier
   where 
     soldier_no=#{no}
   </delete>
   
   <update id="updateDday">
-    UPDATE myapp_soldier
+    UPDATE myproject_soldier
     SET d_day = DATEDIFF(dis_date, NOW())
   </update>
   

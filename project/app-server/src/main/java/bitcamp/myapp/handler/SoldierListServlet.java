@@ -68,7 +68,7 @@ public class SoldierListServlet extends HttpServlet {
     out.println("<div class='container'>");
     out.println("<h1>병사 목록</h1>");
 
-    out.println("<a href='/soldier/add.html' class='btn'>전입신병 등록</a>");
+    out.println("<a href='/soldier/add' class='btn'>전입신병 등록</a>");
     out.println("<a href='/index.html' class='btn'>메인 화면으로</a>");
     out.println("<img src='/marinedog2.png' alt='설명' style='margin-left: 20px' />");
     out.println("<br><br>");

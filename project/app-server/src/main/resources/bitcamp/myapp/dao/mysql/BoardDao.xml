@@ -13,15 +13,27 @@
     <result column="created_date"   property="createdDate"/>
     <result column="category"       property="category"/>
     
-    <association property="writer"  javaType="soldier">
+    <association property="writer" javaType="soldier">
       <id     column="soldier_no"    property="no"/>
       <result column="name"         property="name"/>
     </association>
     
+    <collection property="attachedFiles" ofType="attachedFile">
+      <id     column="board_file_no"    property="no"/>
+      <result column="filepath"         property="filePath"/>
+    </collection>
+    
+  </resultMap>
+  
+  <resultMap type="attachedFile" id="attachedFileMap">
+    <id     column="board_file_no"  property="no"/>
+    <result column="filepath"       property="filePath"/>
+    <result column="board_no"       property="boardNo"/>
   </resultMap>
 
-  <insert id="insert" parameterType="board">
-    insert into myapp_board(title,content,writer,category)
+  <insert id="insert" parameterType="board"
+          useGeneratedKeys="true" keyColumn="board_no" keyProperty="no">
+    insert into myproject_board(title,content,writer,category)
     values(#{title},#{content},#{writer.no},#{category})
   </insert>
   
@@ -35,7 +47,7 @@
       s.soldier_no,
       s.name
     from
-      myapp_board b inner join myapp_soldier s on b.writer=s.soldier_no
+      myproject_board b inner join myproject_soldier s on b.writer=s.soldier_no
     where
       category=#{categoryNo}
     order by
@@ -51,16 +63,19 @@
       b.created_date,
       b.category,
       s.soldier_no,
-      s.name
+      s.name,
+      f.board_file_no,
+      f.filepath
     from
-      myapp_board b inner join myapp_soldier s on b.writer=s.soldier_no
+      myproject_board b inner join myproject_soldier s on b.writer=s.soldier_no
+      left outer join myproject_board_file f on b.board_no=f.board_no
     where
-      category=#{categoryNo}
-      and board_no=#{boardNo}
+      b.category=#{categoryNo}
+      and b.board_no=#{boardNo}
   </select>
   
   <update id="update" parameterType="board">
-    update myapp_board set
+    update myproject_board set
       title=#{title},
       content=#{content}
     where 
@@ -70,7 +85,7 @@
   </update>
   
   <update id="updateCount" parameterType="board">
-    update myapp_board set
+    update myproject_board set
       view_count=#{viewCount}
     where
       category=#{category}
@@ -78,11 +93,34 @@
   </update>
   
   <delete id="delete" parameterType="board">
-    delete from myapp_board
+    delete from myproject_board
     where 
       category=#{category}
       and board_no=#{no}
       and writer=#{writer.no}
+  </delete>
+  
+  <insert id="insertFiles" parameterType="board">
+    insert into myproject_board_file(filepath, board_no) 
+    values 
+    <foreach collection="attachedFiles" item="file" separator=",">(#{file.filePath}, #{no})</foreach>
+  </insert>
+  
+  <select id="findFileBy" parameterType="int" resultMap="attachedFileMap">
+    select
+      board_file_no,
+      filepath,
+      board_no
+    from
+      myproject_board_file
+    where
+      board_file_no=#{no}
+  </select>
+  
+  <delete id="deleteFile" parameterType="int">
+    delete from myproject_board_file
+    where 
+      board_file_no=#{no}
   </delete>
 </mapper>
 
