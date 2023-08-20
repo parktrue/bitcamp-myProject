@@ -4,13 +4,16 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import bitcamp.myapp.vo.Soldier;
 
 @WebServlet("/soldier/add")
+@MultipartConfig(maxFileSize = 1024 * 1024 * 10)
 public class SoldierAddServlet extends HttpServlet {
 
   private static final long serialVersionUID = 1L;
@@ -32,6 +35,7 @@ public class SoldierAddServlet extends HttpServlet {
     out.println("<html>");
     out.println("<head>");
     out.println("<meta charset='UTF-8'>");
+    out.println("<form action='/soldier/add' method='post' enctype='multipart/form-data'>");
     out.println("<title>병사 등록</title>");
     out.println("<style>");
     out.println("body {");
@@ -94,7 +98,6 @@ public class SoldierAddServlet extends HttpServlet {
     out.println("<body>");
     out.println("<div class='container'>");
     out.println("<h1>병사 등록</h1>");
-    out.println("<form action='/soldier/add' method='post'>");
     out.println("<table>");
     out.println("<tr>");
     out.println("<th>이름</th>");
@@ -119,6 +122,11 @@ public class SoldierAddServlet extends HttpServlet {
     out.println("</select>");
     out.println("</td>");
     out.println("</tr>");
+
+    out.println("<tr>");
+    out.println("<th>사진</th> <td><input type='file' name='photo'></td>");
+    out.println("</tr>");
+
     out.println("<tr>");
     out.println("<th>입대일</th>");
     out.println("<td><input type='date' name='enlistmentDate' required></td>");
@@ -149,6 +157,14 @@ public class SoldierAddServlet extends HttpServlet {
 
     s.setPassword(request.getParameter("password"));
     s.setEnlistmentDate(LocalDate.parse(request.getParameter("enlistmentDate")));
+
+    Part photoPart = request.getPart("photo");
+    if (photoPart.getSize() > 0) {
+      String uploadFileUrl = InitServlet.ncpObjectStorageService.uploadFile("bitcamp-nc7-bucket-01",
+          "soldier/", photoPart);
+      s.setPhoto(uploadFileUrl);
+    }
+
 
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();

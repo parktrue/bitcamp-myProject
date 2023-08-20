@@ -12,7 +12,6 @@ public class Soldier implements Serializable {
   public static final int SERGEANT = 4;
 
   public static int soldierId = 1;
-
   private int no;
   private String name;
   private String rank;
@@ -22,6 +21,7 @@ public class Soldier implements Serializable {
   private LocalDate dischargeDate; // 전역일
   private long dDay; // D-day
   private String militaryNumber; // 군번
+  private String photo;
 
   public Soldier() {}
 
@@ -148,5 +148,13 @@ public class Soldier implements Serializable {
       default:
         return "등급없음";
     }
+  }
+
+  public String getPhoto() {
+    return photo;
+  }
+
+  public void setPhoto(String photo) {
+    this.photo = photo;
   }
 }

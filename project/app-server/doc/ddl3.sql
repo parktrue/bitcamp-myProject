@@ -21,7 +21,8 @@ CREATE TABLE `myproject_soldier` (
   `rank`           VARCHAR(10)  NOT NULL COMMENT '계급', -- 계급
   `enlis_date`     DATE         NOT NULL COMMENT '입대일', -- 입대일
   `dis_date`       DATE         NULL     COMMENT '전역일', -- 전역일
-  `d_day`          INTEGER      NULL     COMMENT '디데이' -- 디데이
+  `d_day`          INTEGER      NULL     COMMENT '디데이', -- 디데이
+  `photo`          VARCHAR(255) NULL     COMMENT '사진' -- 사진
 )
 COMMENT '군인';
 
