@@ -3,7 +3,6 @@ package bitcamp.myapp.handler;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.UUID;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -38,16 +37,14 @@ public class BoardAddServlet extends HttpServlet {
       board.setContent(request.getParameter("content"));
       board.setCategory(Integer.parseInt(request.getParameter("category")));
 
-      String uploadDir = request.getServletContext().getRealPath("/upload/board/");
       ArrayList<AttachedFile> attachedFiles = new ArrayList<>();
-
       for (Part part : request.getParts()) {
         // System.out.println(part.getName());
         if (part.getName().equals("files") && part.getSize() > 0) {
-          String filename = UUID.randomUUID().toString();
-          part.write(uploadDir + filename);
+          String uploadFileUrl = InitServlet.ncpObjectStorageService
+              .uploadFile("bitcamp-nc7-bucket-01", "board2/", part);
           AttachedFile attachedFile = new AttachedFile();
-          attachedFile.setFilePath(filename);
+          attachedFile.setFilePath(uploadFileUrl);
           attachedFiles.add(attachedFile);
         }
       }

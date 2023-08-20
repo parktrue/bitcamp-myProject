@@ -10,6 +10,8 @@ import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.dao.MySQLBoardDao;
 import bitcamp.myapp.dao.MySQLSoldierDao;
 import bitcamp.myapp.dao.SoldierDao;
+import bitcamp.util.NcpConfig;
+import bitcamp.util.NcpObjectStorageService;
 import bitcamp.util.SqlSessionFactoryProxy;
 
 @WebServlet(value = "/init", loadOnStartup = 1)
@@ -20,6 +22,7 @@ public class InitServlet extends HttpServlet {
   public static SqlSessionFactory sqlSessionFactory;
   public static BoardDao boardDao;
   public static SoldierDao soldierDao;
+  public static NcpObjectStorageService ncpObjectStorageService;
 
   @Override
   public void init() throws ServletException {
@@ -31,6 +34,7 @@ public class InitServlet extends HttpServlet {
 
       boardDao = new MySQLBoardDao(sqlSessionFactory);
       soldierDao = new MySQLSoldierDao(sqlSessionFactory);
+      ncpObjectStorageService = new NcpObjectStorageService(new NcpConfig());
 
     } catch (Exception e) {
       System.out.println("InitServlet.init() 실행 중 오류 발생!");
