@@ -1,0 +1,72 @@
+plugins {
+    id 'java'
+    id 'eclipse-wtp'
+    id 'war'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // 서브 프로젝트의 클래스를 사용하기
+    implementation project(':app-common')
+    
+    // MySQL JDBC Driver
+    implementation 'mysql:mysql-connector-java:8.0.33'
+    
+    // Google JSON 라이브러리
+    //implementation 'com.google.code.gson:gson:2.10.1'
+  
+    // Mybatis 라이브러리
+    implementation 'org.mybatis:mybatis:3.5.13'
+    
+    // Servlet API 
+    providedCompile 'javax.servlet:javax.servlet-api:4.0.1'
+        
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
+    implementation 'com.google.guava:guava:31.1-jre'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8' 
+    sourceCompatibility = '17'
+    targetCompatibility = '17'
+}
+
+// eclipse 프로젝트 이름을 설정하기
+eclipse {
+    project {
+        name = "bitcamp-project-myapp-server"
+    }
+    jdt {
+      sourceCompatibility = 17
+      targetCompatibility = 17
+      javaRuntimeName = "JavaSE-17"
+    }
+    wtp {
+        facet {
+            facet name: 'jst.java', version: '17'
+            //facet name: 'jst.web', version: '4.0'
+        }
+        component {
+            // myapp 루트를 서버 루트로 지정한다.
+            // 지정하지 않으면 war파일명이 사용된다! 여기선 myapp
+            contextPath = '/'
+            //deployName = 'web'
+        }
+    }
+}
+war {
+    archiveBaseName = "myapp"
+}
