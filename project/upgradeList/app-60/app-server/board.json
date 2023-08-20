@@ -1,0 +1,20 @@
+[
+  {
+    "no": 1,
+    "title": "TEST",
+    "content": "TESTTESTTEST",
+    "writer": "T",
+    "password": "123",
+    "viewCount": 2,
+    "createdDate": 1689000144001
+  },
+  {
+    "no": 2,
+    "title": "TEST2",
+    "content": "TEST2",
+    "writer": "ADMIN",
+    "password": "123",
+    "viewCount": 4,
+    "createdDate": 1689070357719
+  }
+]
