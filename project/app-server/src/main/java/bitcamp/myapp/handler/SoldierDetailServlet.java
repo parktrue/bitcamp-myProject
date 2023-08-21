@@ -82,14 +82,12 @@ public class SoldierDetailServlet extends HttpServlet {
     } else {
       out.println("<form action='/soldier/update' method='post' enctype='multipart/form-data'>");
       out.println("<table border='1'>");
-      out.printf("<tr><th style='width:120px;'>사진</th>"
-          + " <td style='width:300px;'>"
-          + (soldier.getPhoto() == null ? "<img style='height:50px' src='/images/avatar.png'>" :
-            "<a href='https://kr.object.ncloudstorage.com/bitcamp-nc7-bucket-01/soldier/%s'>"
-            + "<http://xxqrmvmzbxkt19010716.cdn.ntruss.com/soldier/%1$s?type=f&w=60&h=80&faceopt=true&ttype=jpg'>"
-            + "</a>")
-          + " <input type='file' name='photo'>"
-          + "</td></tr>\n", soldier.getPhoto());
+      out.printf("<tr><th style='width:120px;'>사진</th>" + " <td style='width:300px;'>"
+          + (soldier.getPhoto() == null ? "<img style='height:50px' src='/images/avatar.png'>"
+              : "<a href='https://kr.object.ncloudstorage.com/bitcamp-nc7-bucket-01/soldier/%s'>"
+                  + "<img src='http://xxqrmvmzbxkt19010716.cdn.ntruss.com/soldier/%1$s?type=f&w=15&h=15&faceopt=true&ttype=jpg'>"
+                  + "</a>")
+          + " <input type='file' name='photo'>" + "</td></tr>\n", soldier.getPhoto());
       out.printf("<tr><th style='width:120px;'>번호</th>"
           + " <td style='width:300px;'><input type='text' name='no' value='%d' readonly></td></tr>\n",
           soldier.getNo());

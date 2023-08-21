@@ -82,8 +82,11 @@ public class SoldierListServlet extends HttpServlet {
     for (Soldier soldier : soldiers) {
       long dDay = ChronoUnit.DAYS.between(LocalDate.now(), soldier.getDischargeDate());
       out.printf(
-          "<tr><td>%d</td><td><a href='/soldier/detail?no=%d'>%s</a></td><td>%s</td><td>%d</td><td>%s</td><td>%s</td><td>%d</td><td><a href='/soldier/detail?no=%d'>변경</a> | <a href='/soldier/delete?no=%d'>삭제</a></td></tr>\n",
-          soldier.getNo(), soldier.getNo(), soldier.getName(), soldier.getRank(), soldier.getAge(),
+          "<tr><td>%d</td>"
+          + "<td>"
+          +  "<img src='http://xxqrmvmzbxkt19010716.cdn.ntruss.com/soldier/%s?type=f&w=15&h=15&faceopt=true&ttype=jpg'>"
+          + "<a href='/soldier/detail?no=%d'>%s</a></td><td>%s</td><td>%d</td><td>%s</td><td>%s</td><td>%d</td><td><a href='/soldier/detail?no=%d'>변경</a> | <a href='/soldier/delete?no=%d'>삭제</a></td></tr>\n",
+          soldier.getNo(), soldier.getPhoto(), soldier.getNo(), soldier.getName(), soldier.getRank(), soldier.getAge(),
           soldier.getEnlistmentDate(), soldier.getDischargeDate(), dDay, soldier.getNo(),
           soldier.getNo());
     }
