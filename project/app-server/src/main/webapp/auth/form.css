@@ -1,0 +1,48 @@
+body {
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f4;
+}
+.container {
+    text-align: center;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px; /* 컨테이너의 너비를 조정 */
+}
+.btn, button.btn, a.btn, a.btn:link, a.btn:visited {
+    display: inline-block;
+    background-color: #0072BC;
+    color: #ffffff;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 1.5;
+    vertical-align: middle;
+    box-sizing: border-box;
+    width: auto; /* 버튼의 너비를 고정하지 않습니다 */
+}
+button.btn {
+    overflow: visible;
+    width: auto;
+    height: auto;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+img.logo {
+    width: 100px;
+    margin-bottom: 20px;
+}
+table {
+    margin: 0 auto; /* 테이블을 중앙에 위치하도록 */
+}

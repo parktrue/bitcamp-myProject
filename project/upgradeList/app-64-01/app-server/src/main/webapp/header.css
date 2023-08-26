@@ -1,0 +1,32 @@
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background-color: darkgray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    padding: 0 20px;
+}
+
+.header-logo {
+    height: 80px;
+    width: 80px;
+    padding: 5px;
+}
+
+.header-title {
+    text-align: center;
+    font-size: 24px;
+    margin: 0;
+}
+
+.header-icon {
+    height: 60px;
+    width: 60px;
+    padding: 5px;
+}

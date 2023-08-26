@@ -1,10 +1,11 @@
 package bitcamp.myapp;
 
+import bitcamp.net.NetProtocol;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.Socket;
 import java.util.Scanner;
-import bitcamp.net.NetProtocol;
 
 public class ClientApp {
 
@@ -47,11 +48,10 @@ public class ClientApp {
         System.out.print(response);
       }
 
+
     } catch (Exception e) {
       System.out.println("서버 통신 오류!");
       e.printStackTrace();
     }
   }
 }
-
-
