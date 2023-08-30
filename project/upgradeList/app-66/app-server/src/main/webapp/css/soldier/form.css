@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 400px;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+    width: 60px;
+    padding-right: 10px;
+}
+
+td {
+    padding: 8px 0;
+}
+
+.btn, button.btn, a.btn, a.btn:link, a.btn:visited {
+    display: inline-block;
+    background-color: #0072BC;
+    color: #ffffff;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 1.5;
+    vertical-align: middle;
+    box-sizing: border-box;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #005a93;
+}
+
+button.btn {
+    overflow: visible;
+    width: auto;
+    height: auto;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
