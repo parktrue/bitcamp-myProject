@@ -9,7 +9,7 @@
 
 <jsp:useBean id="soldierDao" type="bitcamp.myapp.dao.SoldierDao" scope="application"/>
 <jsp:useBean id="sqlSessionFactory" type="org.apache.ibatis.session.SqlSessionFactory" scope="application"/>
-<jsp:useBean id="ncpObjectStorageService" type="bitcamp.util.NcpObjectStorageService" scope="application"/>
+<jsp:useBean id="ncpObjectStorageService" type="bitcamp.myapp.service.NcpObjectStorageService" scope="application"/>
 
 <%
   Soldier loginUser = (Soldier) request.getSession().getAttribute("loginUser");

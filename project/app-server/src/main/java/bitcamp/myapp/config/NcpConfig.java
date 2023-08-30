@@ -1,4 +1,4 @@
-package bitcamp.util;
+package bitcamp.myapp.config;
 
 public class NcpConfig {
   private String endPoint = "https://kr.object.ncloudstorage.com";
@@ -37,6 +37,4 @@ public class NcpConfig {
   public void setSecretKey(String secretKey) {
     this.secretKey = secretKey;
   }
-
-
 }
