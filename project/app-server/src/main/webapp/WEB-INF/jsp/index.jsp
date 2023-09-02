@@ -14,9 +14,8 @@
 </head>
 <body>
 <jsp:include page="header.jsp"/>
-<link rel="stylesheet" href="../../css/header.css">
 <div class='container'>
-  <img src='/marinedog.png' alt='병력 관리' class='logo'>
+  <img src='/marinedog.png' alt='병력 관리' class='logo' height="100px">
   <h1>인사정보체계</h1>
   <a href='/app/soldier/list' class='btn'>병사 목록</a>
   <a href='/app/board/list?category=1' class='btn'>게시판</a>
@@ -31,7 +30,7 @@
   <div class='login-info'>로그인 중: ${loginUser.militaryNumber}(${loginUser.name}, ${loginUser.rank})</div>
   <% } %>
 </div>
+
 <jsp:include page="footer.jsp"/>
-<link rel="stylesheet" href="../../css/footer.css">
 </body>
 </html>

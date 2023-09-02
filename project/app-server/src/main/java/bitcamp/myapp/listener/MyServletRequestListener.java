@@ -1,7 +1,5 @@
 package bitcamp.myapp.listener;
 
-import bitcamp.util.SqlSessionFactoryProxy;
-
 import javax.servlet.ServletRequestEvent;
 import javax.servlet.ServletRequestListener;
 import javax.servlet.annotation.WebListener;
@@ -15,7 +13,7 @@ public class MyServletRequestListener implements ServletRequestListener {
 
   @Override
   public void requestDestroyed(ServletRequestEvent sre) {
-    SqlSessionFactoryProxy sqlSessionFactoryProxy = (SqlSessionFactoryProxy) sre.getServletContext().getAttribute("sqlSessionFactory");
-    sqlSessionFactoryProxy.clean();
+//    SqlSessionFactoryProxy sqlSessionFactoryProxy = (SqlSessionFactoryProxy) sre.getServletContext().getAttribute("sqlSessionFactory");
+//    sqlSessionFactoryProxy.clean();
   }
 }

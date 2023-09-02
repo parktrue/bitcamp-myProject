@@ -10,13 +10,12 @@
 <html>
 <head>
   <meta charset='UTF-8'>
-  <title>게시글</title>
+  <title>국군인트라넷</title>
   <link rel="stylesheet" href="../../../css/board/list.css"/>
 </head>
 <body>
 
 <jsp:include page="../header.jsp"/>
-<link rel="stylesheet" href="../../../css/header.css">
 
 <div class="container" style='margin:5px;'>
   <h1 class="list_title">게시글 목록</h1>
@@ -46,7 +45,7 @@
         </td>
         <td>${board.viewCount}
         </td>
-        <td>${simpleDateFormatter.format(board.createdDate)}
+        <td><fmt:formatDate value="${board.createdDate}" pattern="yyyy-MM-dd"/>
         </td>
         <td>
           <a href='delete?category=${board.category}&no=${board.no}'>삭제</a>
@@ -62,7 +61,6 @@
 </div>
 
 <jsp:include page="../footer.jsp"/>
-<link rel="stylesheet" href="../../../css/footer.css">
 
 </body>
 </html>

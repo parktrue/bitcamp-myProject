@@ -5,18 +5,17 @@
         trimDirectiveWhitespaces="true"
         errorPage="/WEB-INF/jsp/error.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="refresh" value="2;url=list.jsp?category=${param.category}" scope="request"/>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset='UTF-8'>
-  <title>게시글</title>
+  <title>국군인트라넷</title>
 </head>
 <link rel="stylesheet" href="../../../css/board/detail.css">
 <body>
 
 <jsp:include page="../header.jsp"/>
-<link rel="stylesheet" href="../../../css/header.css">
 <div class="container">
   <h1 class="detail_title">게시글</h1>
 
@@ -53,7 +52,7 @@
       </tr>
       <tr>
         <th>등록일</th>
-        <td>${simpleDateFormatter.format(board.createdDate)}
+        <td><fmt:formatDate value="${board.createdDate}" pattern="yyyy-MM-dd"/>
         </td>
       </tr>
       <tr>
@@ -78,6 +77,5 @@
 </div>
 </c:if>
 <jsp:include page="../footer.jsp"/>
-<link rel="stylesheet" href="../../../css/footer.css">
 </body>
 </html>

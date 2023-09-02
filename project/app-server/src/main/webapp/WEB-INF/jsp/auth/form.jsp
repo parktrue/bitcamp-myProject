@@ -12,7 +12,6 @@ contentType="text/html;charset=UTF-8"%>
 </head>
 <body>
 <jsp:include page="../header.jsp"/>
-<link rel="stylesheet" href="../../../css/header.css">
     <div class="container">
         <img src="/marinedog.png" alt="병력 관리" class="logo">
         <h1>로그인</h1>
@@ -34,6 +33,5 @@ contentType="text/html;charset=UTF-8"%>
         </form>
     </div>
             <jsp:include page="../footer.jsp"/>
-            <link rel="stylesheet" href="../../../css/footer.css">
 </body>
 </html>

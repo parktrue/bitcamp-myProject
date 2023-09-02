@@ -4,8 +4,11 @@ import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.vo.AttachedFile;
 import bitcamp.myapp.vo.Board;
 import bitcamp.myapp.vo.Soldier;
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,11 +16,11 @@ import javax.servlet.http.HttpServletResponse;
 @Component("/board/fileDelete")
 public class BoardFileDeleteController implements PageController {
   BoardDao boardDao;
-  SqlSessionFactory sqlSessionFactory;
+  PlatformTransactionManager txManager;
 
-  public BoardFileDeleteController(BoardDao boardDao, SqlSessionFactory sqlSessionFactory) {
+  public BoardFileDeleteController(BoardDao boardDao,  PlatformTransactionManager txManager) {
     this.boardDao = boardDao;
-    this.sqlSessionFactory = sqlSessionFactory;
+    this.txManager = txManager;
   }
 
   @Override
@@ -28,6 +31,12 @@ public class BoardFileDeleteController implements PageController {
     }
 
     Board board = null;
+
+    DefaultTransactionDefinition def = new DefaultTransactionDefinition();
+    def.setName("tx1");
+    def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
+    TransactionStatus status = txManager.getTransaction(def);
+
     try {
       int category = Integer.parseInt(request.getParameter("category"));
       int fileNo = Integer.parseInt(request.getParameter("no"));
@@ -41,12 +50,12 @@ public class BoardFileDeleteController implements PageController {
       if (boardDao.deleteFile(fileNo) == 0) {
         throw new Exception("해당 번호의 첨부파일이 없거나 삭제 권한이 없습니다.");
       } else {
-        sqlSessionFactory.openSession(false).commit();
+        txManager.commit(status);
         return "redirect:detail?category=" + category + "&no=" + board.getNo();
       }
 
     } catch (Exception e) {
-      sqlSessionFactory.openSession(false).rollback();
+      txManager.rollback(status);
       request.setAttribute("refresh", "2;url=/board/detail?category=" + request.getParameter(
           "category") + "&no=" + board.getNo());
       throw e;

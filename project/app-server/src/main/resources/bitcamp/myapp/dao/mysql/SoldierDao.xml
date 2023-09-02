@@ -1,110 +1,110 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="bitcamp.myapp.dao.SoldierDao">
 
-  <!-- 결과 레코드의 컬럼 값을 자바 객체에 어떻게 담을 것인지 설정한다. -->
-  <resultMap type="soldier" id="soldierMap">
-    <id     column="soldier_no"        property="no"/>
-    <result column="soldier_milnum"    property="militaryNumber"/>
-    <result column="name"              property="name"/>
-    <result column="age"               property="age"/>
-    <result column="password"          property="password"/>
-    <result column="rank"              property="rank"/>
-    <result column="enlis_date"        property="enlistmentDate"/>
-    <result column="dis_date"          property="dischargeDate"/>
-    <result column="d_day"             property="dDay"/>
-    <result column="photo"             property="photo"/>
-  </resultMap>
+    <!-- 결과 레코드의 컬럼 값을 자바 객체에 어떻게 담을 것인지 설정한다. -->
+    <resultMap type="soldier" id="soldierMap">
+        <id column="soldier_no" property="no"/>
+        <result column="soldier_milnum" property="militaryNumber"/>
+        <result column="name" property="name"/>
+        <result column="age" property="age"/>
+        <result column="password" property="password"/>
+        <result column="rank" property="rank"/>
+        <result column="enlis_date" property="enlistmentDate"/>
+        <result column="dis_date" property="dischargeDate"/>
+        <result column="d_day" property="dDay"/>
+        <result column="photo" property="photo"/>
+    </resultMap>
 
-  <select id="findLatestMilitaryNumberByYear" parameterType="String" resultType="String">
-  select soldier_milnum 
-  from myproject_soldier 
-  where soldier_milnum like CONCAT(#{year}, '-7200%') 
-  order by soldier_milnum desc 
-  limit 1
-  </select>
+    <select id="findLatestMilitaryNumberByYear" resultType="String">
+        select soldier_milnum
+        from myproject_soldier
+        where soldier_milnum like CONCAT(#{year}, '-7200%')
+        order by soldier_milnum desc
+        limit 1
+    </select>
 
-  <insert id="insert" parameterType="soldier">
-  insert into 
-  myproject_soldier
-  (name,
-   age,
-   password,
-  `rank`,
-   enlis_date,
-   dis_date,
-   d_day,
-   soldier_milnum,
-   photo)
-   values(#{name},#{age},sha1(#{password}),#{rank},#{enlistmentDate},
-   #{dischargeDate},#{dDay},#{militaryNumber},#{photo})
-  </insert>
+    <insert id="insert" parameterType="soldier">
+        insert into
+        myproject_soldier
+        (name,
+        age,
+        password,
+        `rank`,
+        enlis_date,
+        dis_date,
+        d_day,
+        soldier_milnum,
+        photo)
+        values(#{name},#{age},sha1(#{password}),#{rank},#{enlistmentDate},
+        #{dischargeDate},#{dDay},#{militaryNumber},#{photo})
+    </insert>
 
-  <select id="findAll" resultMap="soldierMap">
-  select 
-    soldier_no,
-    soldier_milnum,
-    name,
-    age,
-    `rank`,
-    enlis_date,
-    dis_date,
-    d_day,
-    photo
-  from 
-    myproject_soldier
-  order by
-    soldier_no asc
-  </select>
+    <select id="findAll" resultMap="soldierMap">
+        select
+        soldier_no,
+        soldier_milnum,
+        name,
+        age,
+        `rank`,
+        enlis_date,
+        dis_date,
+        d_day,
+        photo
+        from
+        myproject_soldier
+        order by
+        soldier_no asc
+    </select>
 
-  <select id="findBy" parameterType="int" resultMap="soldierMap">
-  select 
-    soldier_no, soldier_milnum, name, age, `rank`,
-    enlis_date, dis_date, d_day, photo
-  from
-    myproject_soldier
-  where
-    soldier_no=#{no}
-  </select>
+    <select id="findBy" parameterType="int" resultMap="soldierMap">
+        select
+        soldier_no, soldier_milnum, name, age, `rank`,
+        enlis_date, dis_date, d_day, photo
+        from
+        myproject_soldier
+        where
+        soldier_no=#{no}
+    </select>
 
-  <select id="findByMilnumAndPassword" parameterType="soldier" resultMap="soldierMap">
-  select 
-    soldier_no,
-    soldier_milnum, name, age, `rank`,
-    enlis_date, dis_date, d_day, photo
-  from 
-    myproject_soldier
-  where
-    soldier_milnum=#{militaryNumber}
-    and password=sha1(#{password})
-  </select>
+    <select id="findByMilnumAndPassword" parameterType="soldier" resultMap="soldierMap">
+        select
+        soldier_no,
+        soldier_milnum, name, age, `rank`,
+        enlis_date, dis_date, d_day, photo
+        from
+        myproject_soldier
+        where
+        soldier_milnum=#{militaryNumber}
+        and password=sha1(#{password})
+    </select>
 
-  <update id="update" parameterType="soldier">
-  update 
-    myproject_soldier set
-    name=#{name}
-    ,age=#{age} 
-    ,`rank`=#{rank}
-    ,soldier_milnum=#{militaryNumber}
-  <if test="photo != null">
-    ,photo=#{photo}
-  </if> 
-  WHERE 
-    soldier_no=#{no}
-  </update>
+    <update id="update" parameterType="soldier">
+        update
+        myproject_soldier set
+        name=#{name}
+        ,age=#{age}
+        ,`rank`=#{rank}
+        ,soldier_milnum=#{militaryNumber}
+        <if test="photo != null">
+            ,photo=#{photo}
+        </if>
+        WHERE
+        soldier_no=#{no}
+    </update>
 
-  <delete id="delete" parameterType="int">
-  delete from myproject_soldier
-  where 
-    soldier_no=#{no}
-  </delete>
-  
-  <update id="updateDday">
-    UPDATE myproject_soldier
-    SET d_day = DATEDIFF(dis_date, NOW())
-  </update>
-  
+    <delete id="delete" parameterType="int">
+        delete from myproject_soldier
+        where
+        soldier_no=#{no}
+    </delete>
+
+    <update id="updateDday">
+        UPDATE myproject_soldier
+        SET d_day = DATEDIFF(dis_date, NOW())
+    </update>
+
 
 </mapper>

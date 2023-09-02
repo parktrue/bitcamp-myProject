@@ -1,7 +1,9 @@
 package bitcamp.myapp.dao;
 
-import java.util.List;
 import bitcamp.myapp.vo.Soldier;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface SoldierDao {
   void insert(Soldier soldier);
@@ -10,11 +12,13 @@ public interface SoldierDao {
 
   Soldier findBy(int no);
 
-  Soldier findByMilnumAndPassword(Soldier s);
+  Soldier findByMilnumAndPassword(@Param("militaryNumber") String milNum, @Param("password") String password);
 
   int update(Soldier soldier);
 
   int delete(int no);
 
   void updateDday();
+
+  String findLatestMilitaryNumberByYear(String enlistmentYear);
 }

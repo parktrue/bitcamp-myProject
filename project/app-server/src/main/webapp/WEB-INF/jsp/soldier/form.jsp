@@ -8,9 +8,8 @@
 <head>
   <meta charset='UTF-8'>
   <form action='add' method='post' enctype='multipart/form-data'>
-    <title>병사 등록</title>
+    <title>인사정보쳬계</title>
     <jsp:include page="../header.jsp"/>
-    <link rel="stylesheet" href="../WEB-INF/header.css">
     <link rel="stylesheet" href="../../../css/soldier/form.css">
 </head>
 <body>
@@ -57,6 +56,5 @@
   </form>
 </div>
 <jsp:include page="../footer.jsp"/>
-<link rel="stylesheet" href="../WEB-INF/footer.css">
 </body>
 </html>

@@ -22,8 +22,8 @@ public class LoginController implements PageController {
       return "/WEB-INF/jsp/auth/form.jsp";
     }
     Soldier s = new Soldier();
-    s.setMilitaryNumber(request.getParameter("milNum"));
-    s.setPassword(request.getParameter("password"));
+    String milNum = request.getParameter("milNum");
+    String password = request.getParameter("password");
 
     if (request.getParameter("saveMilNum") != null) {
       Cookie cookie = new Cookie("milNum", s.getMilitaryNumber());
@@ -34,7 +34,7 @@ public class LoginController implements PageController {
       response.addCookie(cookie);
     }
 
-    Soldier loginUser = soldierDao.findByMilnumAndPassword(s);
+    Soldier loginUser = soldierDao.findByMilnumAndPassword(milNum, password);
     if (loginUser == null) {
       request.setAttribute("refresh", "2;url=/app/auth/login");
       throw new Exception("로그인 정보가 일치하지 않습니다.");

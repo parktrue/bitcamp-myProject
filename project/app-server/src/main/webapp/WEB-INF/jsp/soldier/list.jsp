@@ -12,12 +12,10 @@
 </head>
 <body>
 <jsp:include page="../header.jsp"/>
-<link rel="stylesheet" href="../../../css/header.css">
 <div class='container'>
   <h1>병력 현황</h1>
   <a href='add' class='btn'>전입신병 등록</a>
   <a href='/' class='btn'>메인 화면으로</a>
-  <img src='/marinedog2.png' alt='설명' style='margin-left: 20px'/>
   <br><br>
   <table border='1'>
     <thead>
@@ -50,7 +48,6 @@
     </tbody>
   </table>
 </div>
-<jsp:include page="../footer.jsp"/>
-<link rel="stylesheet" href="../../../css/footer.css">
 </body>
+<jsp:include page="../footer.jsp"/>
 </html>

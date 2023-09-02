@@ -1,9 +1,10 @@
+/* footer.css */
 .footer {
     text-align: center;
     background-color: darkgray;
     color: dimgrey;
     padding: 20px;
-    z-index: 0; /* 푸터의 z-index 값을 조정 */
+    z-index: 0;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -14,5 +15,3 @@ p {
     font-size: 90%;
     margin: 0px;
 }
-
-

@@ -35,18 +35,8 @@ public class Soldier implements Serializable {
     this.no = no;
   }
 
-  public boolean equals(Object obj) {
-    if (obj == null) {
-      return false;
-    }
-    if (this.getClass() != obj.getClass()) {
-      return false;
-    }
-    Soldier s = (Soldier) obj;
-    if (this.getNo() != s.getNo()) {
-      return false;
-    }
-    return true;
+  public static int getSoldierId() {
+    return soldierId;
   }
 
   public int getNo() {
@@ -121,46 +111,15 @@ public class Soldier implements Serializable {
     this.militaryNumber = militaryNumber;
   }
 
-  public String calculateDday() {
-    try {
-      LocalDate today = LocalDate.now();
-      LocalDate dischargeDate = this.getDischargeDate();
-      long dday = dischargeDate.toEpochDay() - today.toEpochDay();
-
-      if (dday == 0) {
-        return "전역일 D-day";
-      } else if (dday < 0) {
-        return "전역일 D+" + Math.abs(dday);
-      } else {
-        return "전역일 D-" + dday;
-      }
-    } catch (Exception e) {
-      e.printStackTrace();
-      return "날짜 오류";
-    }
-  }
-
-  // 새로운 메서드 추가: rank 값을 문자열로 변환해주는 메서드
-  public String getRankString() {
-    switch (rank) {
-      case "1":
-        return "이병";
-      case "2":
-        return "일병";
-      case "3":
-        return "상병";
-      case "4":
-        return "병장";
-      default:
-        return "등급없음";
-    }
-  }
-
   public String getPhoto() {
     return photo;
   }
 
   public void setPhoto(String photo) {
     this.photo = photo;
+  }
+
+  public static void setSoldierId(int soldierId) {
+    Soldier.soldierId = soldierId;
   }
 }

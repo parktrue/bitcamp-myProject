@@ -54,7 +54,7 @@
       board_no desc
   </select>
   
-  <select id="findBy" parameterType="map" resultMap="boardMap">
+  <select id="findBy" resultMap="boardMap">
     select
       b.board_no,
       b.title,
