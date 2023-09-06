@@ -1,0 +1,98 @@
+plugins {
+    id 'java'
+    // id 'eclipse-wtp'
+    id 'war'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // 서브 프로젝트의 클래스를 사용하기
+    implementation project(':app-common')
+    
+    // MySQL JDBC Driver
+    implementation 'mysql:mysql-connector-java:8.0.33'
+    
+    // Google JSON 라이브러리
+    //implementation 'com.google.code.gson:gson:2.10.1'
+  
+    // Mybatis 라이브러리
+    implementation 'org.mybatis:mybatis:3.5.13'
+    
+    // Servlet API 
+    providedCompile 'javax.servlet:javax.servlet-api:4.0.1'
+
+    // JSTL 라이브러리
+    implementation 'jstl:jstl:1.2'
+    
+    // 임베디드 Tomcat 서버
+    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:9.0.79'
+    
+    // Amazon AWS Java SDK s3
+    implementation 'com.amazonaws:aws-java-sdk-s3:1.12.530'
+
+    // Spring WebMVC 라이브러리
+    implementation 'org.springframework:spring-webmvc:5.3.29'
+    // implementation 'org.springframework:spring-webmvc:6.0.11'
+
+    // Spring IoC 컨테이너
+    // implementation 'org.springframework:spring-context:6.0.11'
+
+    // Spring JDBC 라이브러리
+    implementation 'org.springframework:spring-jdbc:5.3.29'
+
+    // Mybatis의 Spring 연동 라이브러리
+    // implementation 'org.mybatis:mybatis-spring:3.0.2'
+    implementation 'org.mybatis:mybatis-spring:2.1.1'
+
+    // Log4j 2.x 라이브러리
+    implementation 'org.apache.logging.log4j:log4j-core:2.20.0'
+        
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
+    implementation 'com.google.guava:guava:31.1-jre'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8' 
+    sourceCompatibility = '17'
+    targetCompatibility = '17'
+}
+/*
+eclipse {
+    project {
+        name = "bitcamp-project-myapp-server"
+    }
+    jdt {
+      sourceCompatibility = 17
+      targetCompatibility = 17
+      javaRuntimeName = "JavaSE-17"
+    }
+    wtp {
+        facet {
+            facet name: 'jst.java', version: '17'
+            //facet name: 'jst.web', version: '4.0'
+        }
+        component {
+            // myapp 루트를 서버 루트로 지정한다.
+            // 지정하지 않으면 war파일명이 사용된다! 여기선 myapp
+            contextPath = '/'
+            //deployName = 'web'
+        }
+    }
+}
+*/
+war {
+    archiveBaseName = "myapp"
+}
