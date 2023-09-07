@@ -8,10 +8,10 @@
 <head>
   <meta charset='UTF-8'>
   <title>인사정보체계</title>
+<jsp:include page="../header.jsp"/>
   <link rel="stylesheet" href="../../../css/soldier/list.css">
 </head>
 <body>
-<jsp:include page="../header.jsp"/>
 <div class='container'>
   <h1>병력 현황</h1>
   <a href='form' class='btn'>전입신병 등록</a>

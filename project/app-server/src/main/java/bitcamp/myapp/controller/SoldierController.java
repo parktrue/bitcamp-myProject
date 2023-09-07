@@ -5,6 +5,8 @@ import bitcamp.myapp.service.SoldierService;
 import bitcamp.myapp.vo.Soldier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.Part;
@@ -14,6 +16,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.Map;
 
 @Controller
+@RequestMapping("/soldier/")
 public class SoldierController {
 
   @Autowired
@@ -21,12 +24,12 @@ public class SoldierController {
   @Autowired
   NcpObjectStorageService ncpObjectStorageService;
 
-  @RequestMapping("/soldier/form")
+  @GetMapping("form")
   public String add() {
     return "/WEB-INF/jsp/soldier/form.jsp";
   }
 
-  @RequestMapping("/soldier/add")
+  @PostMapping("add")
   public String add(Soldier s, Part photofile,
       String enlistmentDateStr, Map<String, Object> model)
       throws Exception {
@@ -80,7 +83,7 @@ public class SoldierController {
   }
 
 
-  @RequestMapping("/soldier/delete")
+  @GetMapping("delete")
   public String delete(int no, Map<String, Object> model) throws Exception {
     try {
       if (soldierService.delete(no) == 0) {
@@ -94,20 +97,20 @@ public class SoldierController {
     }
   }
 
-  @RequestMapping("/soldier/detail")
+  @GetMapping("detail")
   public String detail(int no, Map<String, Object> model) throws Exception {
     model.put("soldier", soldierService.get(no));
     return "/WEB-INF/jsp/soldier/detail.jsp";
   }
 
-  @RequestMapping("/soldier/list")
+  @GetMapping("list")
   public String list(Map<String, Object> model) throws Exception {
     soldierService.updateDday();
     model.put("list", soldierService.list());
     return "/WEB-INF/jsp/soldier/list.jsp";
   }
 
-  @RequestMapping("/soldier/update")
+  @PostMapping("update")
   public String update(Soldier soldier, Part photofile, Map<String, Object> model)
       throws Exception {
 

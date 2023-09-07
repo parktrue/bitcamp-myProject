@@ -4,10 +4,9 @@ body, ul {
     padding: 0;
 }
 
-/* 인덱스 페이지 내용 스타일 */
 .container {
     position: relative;
-    text-align: center;
+    text-align: left;
     background-color: #ffffff;
     padding: 30px;
     border-radius: 8px;
@@ -16,17 +15,24 @@ body, ul {
     overflow: auto;
 }
 
-/* 버튼 스타일 */
 .btn {
-    display: inline-block;
     background-color: lightgray;
     color: dimgrey;
     padding: 10px 20px;
-    margin: 10px;
     border: none;
-    border-radius: 1px;
+    border-radius: 5px;
     cursor: pointer;
-    text-decoration: none;
+    margin: 0 5px;
+}
+
+h1.list_title {
+    text-align: center;
+}
+
+.btn_style {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px; /* 버튼과 표 사이의 간격 조절 */
 }
 
 /* 로고 이미지 스타일 */
@@ -47,7 +53,7 @@ img.logo {
 .top-header {
     background-color: darkgray;
     color: dimgrey;
-    padding: 10px 0;
+    padding: 5px 0;
     display: flex;
     justify-content: space-between; /* 좌우 정렬 */
     align-items: center; /* 세로 가운데 정렬 */
@@ -62,6 +68,8 @@ img.logo {
 
 /* 가운데 텍스트 및 배경 이미지 영역 스타일 */
 .center-content {
+    font-family: Arial, sans-serif;
+    font-style: normal;
     flex-grow: 1; /* 남은 공간을 차지하도록 확장 */
     text-align: center; /* 텍스트 가운데 정렬 */
     /*background: url('background-image.jpg') center/cover no-repeat;*/
@@ -71,24 +79,34 @@ img.logo {
 .top-header .logo_right img {
     width: 60px; /* 이미지의 크기를 조절하세요 */
     height: 60px;
+    margin-right: 10px;
 }
 
 /* 하단 헤더 스타일 */
 .bottom-header {
-    background-color: darkgray;
+    background-color: lightgray;
     padding: 10px 0;
     display: flex;
     justify-content: center; /* 가운데 정렬 */
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 /* 메뉴 영역 스타일 */
 .bottom-header .menu {
     list-style: none;
     display: flex;
+    text-align: center;
+    position: sticky;
+    bottom: 0;
+    background-color: lightgray;
+    z-index: 100;
 }
 
 .bottom-header .menu li {
-    margin-right: 20px;
+    margin-right: 15px;
+    margin-left: 15px;
 }
 
 .bottom-header .menu li:last-child {
@@ -106,7 +124,6 @@ img.logo {
     color: dimgrey;
     padding: 20px;
     z-index: 0;
-    position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
@@ -116,3 +133,4 @@ p {
     font-size: 90%;
     margin: 0px;
 }
+

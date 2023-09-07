@@ -12,17 +12,18 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @Controller
+@RequestMapping("/auth/")
 public class AuthController {
 
   @Autowired
   SoldierService soldierService;
 
-  @RequestMapping("/auth/form")
+  @RequestMapping("form")
   public String form() {
     return "/WEB-INF/jsp/auth/form.jsp";
   }
 
-  @RequestMapping("/auth/login")
+  @RequestMapping("login")
   public String login(
       String milNum,
       String password,
@@ -49,7 +50,7 @@ public class AuthController {
     return "redirect:/";
   }
 
-  @RequestMapping("/auth/logout")
+  @RequestMapping("logout")
   public String logout(HttpSession session) throws Exception {
     session.invalidate();
     return "redirect:/";
