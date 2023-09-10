@@ -1,17 +1,18 @@
-/* footer.css */
-.footer {
-    text-align: center;
-    background-color: darkgray;
-    color: dimgrey;
-    padding: 20px;
-    z-index: 0;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
 
-p {
-    font-size: 90%;
-    margin: 0px;
-}
+/*.footer {*/
+/*    text-align: center;*/
+/*    background-color: darkgray;*/
+/*    color: dimgrey;*/
+/*    padding: 20px;*/
+/*    z-index: 0;*/
+/*    position: absolute;*/
+/*    bottom: 0;*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*}*/
+
+/*p {*/
+/*    font-size: 90%;*/
+/*    margin: 0px;*/
+/*}*/
+

@@ -97,7 +97,7 @@ public class BoardController {
       return "/board/detail";
 
     } catch (Exception e) {
-      model.addAttribute("refresh", "5;url=/board/list?category=" + category);
+      model.addAttribute("refresh", "3;url=/board/list?category=" + category);
       throw e;
     }
   }

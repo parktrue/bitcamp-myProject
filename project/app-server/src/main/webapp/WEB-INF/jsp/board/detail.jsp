@@ -19,7 +19,7 @@
 <jsp:include page="../header.jsp"/>
 <div class="container">
   <h1 class="detail_title">게시글</h1>
-
+  <link rel="stylesheet" href="../../../css/board/detail.css">
   <c:if test="${empty board}">
     <p>해당 번호의 게시글이 없습니다!</p>
   </c:if>
@@ -74,7 +74,7 @@
     <button class=".btn" type='reset'>초기화</button>
     <button class=".btn"><a href='delete?category=${board.category}&no=${board.no}'>삭제</a></button>
     <button class=".btn"><a href='list?category=${board.category}'>목록</a></button>
-</form>
+  </form>
 </div>
 </c:if>
 <jsp:include page="../footer.jsp"/>

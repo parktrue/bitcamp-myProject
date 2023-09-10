@@ -26,8 +26,7 @@ public class SoldierController {
   NcpObjectStorageService ncpObjectStorageService;
 
   @GetMapping("form")
-  public String add() {
-    return "/WEB-INF/jsp/soldier/form.jsp";
+  public void form() {
   }
 
   @PostMapping("add")
@@ -104,10 +103,9 @@ public class SoldierController {
   }
 
   @GetMapping("list")
-  public String list(Model model) throws Exception {
+  public void list(Model model) throws Exception {
     soldierService.updateDday();
     model.addAttribute("list", soldierService.list());
-    return "/WEB-INF/jsp/soldier/list.jsp";
   }
 
   @PostMapping("update")

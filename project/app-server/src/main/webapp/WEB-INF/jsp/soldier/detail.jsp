@@ -82,7 +82,7 @@
         <div>
           <button class='btn'>변경</button>
           <button class='btn' type='reset'>초기화</button>
-          <a href='delete?no=${param.no}' class='btn'>삭제</a>
+          <a href='delete?no=${soldier.no}' class='btn'>삭제</a>
           <a href='list' class='btn'>목록</a>
         </div>
       </table>

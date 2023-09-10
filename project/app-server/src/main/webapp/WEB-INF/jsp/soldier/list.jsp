@@ -35,7 +35,7 @@
       <td>${soldier.no}</td>
       <td>
         <img src='http://xxqrmvmzbxkt19010716.cdn.ntruss.com/soldier/${soldier.photo}?type=f&w=15&h=15&faceopt=true&ttype=jpg'>
-        <a href=${soldier.no}'>${soldier.name}</a></td>
+        <a href=${soldier.no}>${soldier.name}</a></td>
       <td>${soldier.rank}</td>
       <td>${soldier.age}</td>
       <td>${soldier.enlistmentDate}</td>
