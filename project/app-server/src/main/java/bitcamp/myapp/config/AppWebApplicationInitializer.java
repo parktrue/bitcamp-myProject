@@ -21,19 +21,16 @@ public class AppWebApplicationInitializer extends
 
   @Override
   protected Class<?>[] getRootConfigClasses() {
-    // ContextLoaderListener의 IoC 컨테이너가 사용할 java config 클래스를 지정한다.
     return new Class[]{RootConfig.class, DbConfig.class, MybatisConfig.class};
   }
 
   @Override
   protected Class<?>[] getServletConfigClasses() {
-    // DispatcherServlet의 IoC 컨테이너가 사용할 java config 클래스를 지정한다.
     return new Class[]{AppConfig.class};
   }
 
   @Override
   protected String[] getServletMappings() {
-    // DispatcherServlet의 URL을 지정한다.
     return new String[]{"/app/*"};
   }
 

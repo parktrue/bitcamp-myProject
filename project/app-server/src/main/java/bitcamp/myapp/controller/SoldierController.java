@@ -6,12 +6,9 @@ import bitcamp.myapp.vo.Soldier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.Part;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
@@ -30,7 +27,7 @@ public class SoldierController {
   }
 
   @PostMapping("add")
-  public String add(Soldier s, Part photofile, String enlistmentDateStr, Model model)
+  public String add(Soldier s, @RequestParam("photofile") MultipartFile photofile, String enlistmentDateStr, Model model)
       throws Exception {
     try {
       String ageStr = String.valueOf(s.getAge());
@@ -109,7 +106,7 @@ public class SoldierController {
   }
 
   @PostMapping("update")
-  public String update(Soldier soldier, Part photofile, Model model) throws Exception {
+  public String update(Soldier soldier, MultipartFile photofile, Model model) throws Exception {
 
     try {
       if (photofile.getSize() > 0) {

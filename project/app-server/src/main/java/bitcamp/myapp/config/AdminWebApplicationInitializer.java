@@ -21,22 +21,16 @@ public class AdminWebApplicationInitializer extends
 
   @Override
   protected Class<?>[] getRootConfigClasses() {
-    // ContextLoaderListener의 IoC 컨테이너가 사용할 java config 클래스를 지정한다.
-    // => AppWebApplicationInitializer 에서
-    // Rootconfig를 가지고 ContextLoaderListener을 만들었기 때문에,
-    // 여기서는 설정하지 않는다!
     return null;
   }
 
   @Override
   protected Class<?>[] getServletConfigClasses() {
-    // DispatcherServlet의 IoC 컨테이너가 사용할 java config 클래스를 지정한다.
     return new Class[]{AdminConfig.class};
   }
 
   @Override
   protected String[] getServletMappings() {
-    // DispatcherServlet의 URL을 지정한다.
     return new String[]{"/admin/*"};
   }
 

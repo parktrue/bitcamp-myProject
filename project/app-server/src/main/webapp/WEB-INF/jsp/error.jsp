@@ -11,7 +11,7 @@
 %>
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="../../css/error.css">
+<link rel="stylesheet" href="/css/error.css">
 <head>
   <meta charset='UTF-8'>
   <title>실행오류</title>

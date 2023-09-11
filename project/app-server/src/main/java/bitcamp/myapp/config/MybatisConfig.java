@@ -22,8 +22,6 @@ public class MybatisConfig {
       throws Exception {
     System.out.println("MybatisConfig.sqlSessionFactory() 호출");
 
-    // Mybatis 에서 Log4j 2.x 버전을 사용하도록 활성화시킨다.
-    // 활성화 시키지 않으면 Mybatis에서 로그를 출력하지 않는다!
     org.apache.ibatis.logging.LogFactory.useLog4J2Logging();
 
     SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
